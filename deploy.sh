@@ -17,6 +17,9 @@ cd $REPOSITORY
 echo "> Copy jar To step1 folder..."
 cp $REPOSITORY/$PROJECT_NAME/build/libs/*.jar $REPOSITORY/
 
+echo "> Remove jar in libs..."
+rm $REPOSITORY/$PROJECT_NAME/build/libs/*.jar
+
 echo "> Check exist PID..."
 CURRENT_PID=$(pgrep -f ${PROJECT_NAME}.*.jar)
 
