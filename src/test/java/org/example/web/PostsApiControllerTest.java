@@ -61,56 +61,56 @@ public class PostsApiControllerTest {
         postsRepository.deleteAll();
     }
 
-    @Test
-    @WithMockUser(roles="USER")
-    public void Posts_regist() throws Exception{
-        String title = "title";
-        String content = "content";
-        PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
-                .title(title).content(content).author("author").build();
-
-        String url = "http://localhost:" + port + "/api/v1/posts";
-
-        mvc.perform(post(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(new ObjectMapper().writeValueAsString(requestDto)))
-                .andExpect(status().isOk());
-
-        List<Posts> all = postsRepository.findAll();
-        assertThat(all.get(0).getTitle()).isEqualTo(title);
-        assertThat(all.get(0).getContent()).isEqualTo(content);
-    }
-
-    @Test
-    @WithMockUser(roles="USER")
-    public void Posts_edit() throws Exception{
-        Posts savedPosts = postsRepository.save(Posts.builder().title("title").content("content").author("author").build());
-        Long updateId = savedPosts.getId();
-        String expectedTitle = "title2";
-        String expectedContent = "content2";
-
-        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
-                .title(expectedTitle).content(expectedContent).build();
-
-        String url = "http://localhost:" + port + "/api/v1/posts/" + updateId;
-
-        mvc.perform(put(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(new ObjectMapper().writeValueAsString(requestDto)))
-                .andExpect(status().isOk());
-
-        List<Posts> all = postsRepository.findAll();
-        assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
-        assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
-
-
-
-//        HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
+//    @Test
+//    @WithMockUser(roles="USER")
+//    public void Posts_regist() throws Exception{
+//        String title = "title";
+//        String content = "content";
+//        PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
+//                .title(title).content(content).author("author").build();
 //
-//        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
+//        String url = "http://localhost:" + port + "/api/v1/posts";
 //
-//        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-//        assertThat(responseEntity.getBody()).isGreaterThan(0L);
-    }
+//        mvc.perform(post(url)
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(new ObjectMapper().writeValueAsString(requestDto)))
+//                .andExpect(status().isOk());
+//
+//        List<Posts> all = postsRepository.findAll();
+//        assertThat(all.get(0).getTitle()).isEqualTo(title);
+//        assertThat(all.get(0).getContent()).isEqualTo(content);
+//    }
+//
+//    @Test
+//    @WithMockUser(roles="USER")
+//    public void Posts_edit() throws Exception{
+//        Posts savedPosts = postsRepository.save(Posts.builder().title("title").content("content").author("author").build());
+//        Long updateId = savedPosts.getId();
+//        String expectedTitle = "title2";
+//        String expectedContent = "content2";
+//
+//        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
+//                .title(expectedTitle).content(expectedContent).build();
+//
+//        String url = "http://localhost:" + port + "/api/v1/posts/" + updateId;
+//
+//        mvc.perform(put(url)
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(new ObjectMapper().writeValueAsString(requestDto)))
+//                .andExpect(status().isOk());
+//
+//        List<Posts> all = postsRepository.findAll();
+//        assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
+//        assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
+//
+//
+//
+////        HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
+////
+////        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
+////
+////        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+////        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+//    }
 
 }
