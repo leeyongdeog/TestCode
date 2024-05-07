@@ -18,7 +18,7 @@ echo "> Copy jar To step1 folder..."
 cp $REPOSITORY/$PROJECT_NAME/build/libs/*.jar $REPOSITORY/
 
 echo "> Check exist PID..."
-CURRENT_PID=${pgrep -f ${PROJECT_NAME}.*.jar}
+CURRENT_PID=$(pgrep -f ${PROJECT_NAME}.*.jar)
 
 echo "> Current Running PID: $CURRENT_PID"
 
