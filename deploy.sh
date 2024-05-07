@@ -39,6 +39,5 @@ nohup java -jar \
 -Dspring.config.location=/home/ubuntu/app/application-oauth.properties \
 $REPOSITORY/$JAR_NAME 2>&1 &
 
-
-echo "done"
+echo "Done!!"
 
