@@ -13,28 +13,40 @@ repositories {
 }
 
 dependencies {
-    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
-    implementation('org.mariadb.jdbc:mariadb-java-client')
-    implementation('org.springframework.session:spring-session-jdbc')
-    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+
 
     implementation('org.springframework.boot:spring-boot-starter-web')
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
-
-    implementation('org.springframework.boot:spring-boot-gradle-plugin:2.4.1')
-    testImplementation('junit:junit:4.13.2')
-
     annotationProcessor('org.projectlombok:lombok')
-    testAnnotationProcessor('org.projectlombok:lombok')
-
     implementation('org.projectlombok:lombok')
-    testImplementation('org.projectlombok:lombok')
-
-    implementation('com.h2database:h2')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
     implementation('org.springframework.boot:spring-boot-starter-mustache')
-    testImplementation('org.springframework.boot:spring-boot-starter-mustache')
+    implementation('com.h2database:h2')
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
+    implementation('org.springframework.session:spring-session-jdbc')
+    implementation('org.mariadb.jdbc:mariadb-java-client')
 
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('org.springframework.security:spring-security-test')
+
+
+
+
+
+//    implementation('org.springframework.boot:spring-boot-gradle-plugin:2.4.1')
+    testImplementation('junit:junit:4.13.2')
+//
+//
+//    testAnnotationProcessor('org.projectlombok:lombok')
+//
+//
+//    testImplementation('org.projectlombok:lombok')
+//
+//
+//
+//    testImplementation('org.springframework.boot:spring-boot-starter-mustache')
+
+
 }
 
 test {
