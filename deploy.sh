@@ -14,6 +14,9 @@ echo "> Start Build..."
 echo "> cd step1..."
 cd $REPOSITORY
 
+echo "> Remove jar in REPOSITOY"
+rm $REPOSITORY/*.jar
+
 echo "> Copy jar To step1 folder..."
 cp $REPOSITORY/$PROJECT_NAME/build/libs/*.jar $REPOSITORY/
 
