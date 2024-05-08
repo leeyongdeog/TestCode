@@ -33,7 +33,7 @@ public class IndexController {
 //            model.addAttribute("userPic", user.getPicture());
 //            model.addAttribute("userEmail", user.getEmail());
 //        }
-
+        System.out.println("index in");
         return "index";
     }
 
