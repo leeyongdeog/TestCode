@@ -10,7 +10,8 @@ echo "> Copy Build files..."
 cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> Check running PID..."
-CURRENT_PID=$(pgrep -fl ${PROJECT_NAME} | grep jar | awk '{print $1}')
+#CURRENT_PID=$(pgrep -fl ${PROJECT_NAME} | grep jar | awk '{print $1}')
+CURRENT_PID=$(pgrep -f ${PROJECT_NAME}.*.jar)
 
 echo "> Running PID: $CURRENT_PID"
 
@@ -23,7 +24,8 @@ else
 fi
 
 echo "> Deploy..."
-JAR_NAME=$(ls -tr $REPOSITORY/*.jar | tail -n 1)
+#JAR_NAME=$(ls -tr $REPOSITORY/*.jar | tail -n 1)
+JAR_NAME=$(ls -tr $REPOSITORY/ | grep jar | tail -n 1)
 
 echo "> JAR Name: $JAR_NAME"
 echo "> Set Permission to $JAR_NAME"
@@ -31,9 +33,8 @@ chmod +x $JAR_NAME
 echo "> Run $JAR_NAME..."
 
 nohup java -jar \
-  --spring.application.name=${PROJECT_NAME}
   -Dspring.config.location=classpath:/application.properties,/home/ubuntu/app/application-oauth.properties,/home/ubuntu/app/application-real-db.properties,classpath:/application-real.properties \
   -Dspring.profiles.active=real \
-  $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+  $REPOSITORY/$JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 
 echo "> Done!!"
