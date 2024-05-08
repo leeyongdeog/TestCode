@@ -6,7 +6,7 @@ PROJECT_NAME=TestCode
 cd $REPOSITORY/$PROJECT_NAME/
 
 echo "> Git Pull..."
-git pull origin yorer
+git pull
 
 echo "> Start Build..."
 ./gradlew build
