@@ -16,10 +16,9 @@ script:
 
 before_deploy:
   - mkdir -p before-deploy
+  - chmod +x scripts/deploy.sh
   - cp scripts/*sh before-deploy/
   - cp appspec.yml before-deploy/
-  - chmod +x *.sh
-  - chmod +x *.yml
   - cp build/libs/*.jar before-deploy/
   - cd before-deploy && zip -r before-deploy *
   - cd ../ && mkdir -p deploy
