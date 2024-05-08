@@ -10,7 +10,7 @@ echo "> Copy Build files..."
 cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> Check running PID..."
-CURRENT_PID=$(pgrep -fl $PROJECT_NAME | jar | awk '{print $1}')
+CURRENT_PID=$(pgrep -fl ${PROJECT_NAME} | jar | awk '{print $1}')
 
 echo "> Running PID: $CURRENT_PID"
 
@@ -33,6 +33,6 @@ echo "> Run $JAR_NAME..."
 nohup java -jar \
   -Dspring.config.location=classpath:/application.properties,/home/ubuntu/app/application-oauth.properties,/home/ubuntu/app/application-real-db.properties,classpath:/application-real.properties \
   -Dspring.profiles.active=real \
-  $JAR_NAME 2>&1 &
+  $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 
 echo "> Done!!"
