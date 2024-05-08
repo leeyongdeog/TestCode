@@ -24,12 +24,12 @@ public class IndexController {
     @GetMapping("/")
     public String index(Model model, @LoginUser SessionUser user) {
         List<PostsListResponseDto> dto = postsService.findAllDesc();
-//        model.addAttribute("posts", dto);
-//        if(user != null){
-//            model.addAttribute("userName", user.getName());
-//            model.addAttribute("userPic", user.getPicture());
-//            model.addAttribute("userEmail", user.getEmail());
-//        }
+        model.addAttribute("posts", dto);
+        if(user != null){
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("userPic", user.getPicture());
+            model.addAttribute("userEmail", user.getEmail());
+        }
         System.out.println("index in");
         return "index";
     }
