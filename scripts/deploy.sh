@@ -19,7 +19,7 @@ if [ -z "$CURRENT_PID" ]; then
   echo "> Not exist running PID..."
 else
   echo "> Kill -15 $CURRENT_PID..."
-  kill -15 CURRENT_PID
+  kill -15 $CURRENT_PID
   sleep 5
 fi
 
