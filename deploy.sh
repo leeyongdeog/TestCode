@@ -16,6 +16,7 @@ cd $REPOSITORY
 
 echo "> Remove jar in REPOSITOY"
 rm $REPOSITORY/*.jar
+rm $REPOSITORY/nohup.out
 
 echo "> Copy jar To step1 folder..."
 cp $REPOSITORY/$PROJECT_NAME/build/libs/*.jar $REPOSITORY/
