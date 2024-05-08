@@ -30,7 +30,7 @@ echo "> Set Permission to $JAR_NAME"
 chmod +x $JAR_NAME
 echo "> Run $JAR_NAME..."
 
-nohup exec java -jar \
+nohup java -jar \
   --spring.application.name=${PROJECT_NAME}
   -Dspring.config.location=classpath:/application.properties,/home/ubuntu/app/application-oauth.properties,/home/ubuntu/app/application-real-db.properties,classpath:/application-real.properties \
   -Dspring.profiles.active=real \
