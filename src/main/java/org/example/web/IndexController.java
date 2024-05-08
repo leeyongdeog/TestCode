@@ -23,6 +23,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model, @LoginUser SessionUser user) {
+        System.out.println("--------------IndexController: index");
         List<PostsListResponseDto> dto = postsService.findAllDesc();
         model.addAttribute("posts", dto);
         if(user != null){
@@ -30,7 +31,6 @@ public class IndexController {
             model.addAttribute("userPic", user.getPicture());
             model.addAttribute("userEmail", user.getEmail());
         }
-        System.out.println("index in");
         return "index";
     }
 
