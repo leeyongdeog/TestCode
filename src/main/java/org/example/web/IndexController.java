@@ -23,16 +23,16 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model, @LoginUser SessionUser user) {
-        List<PostsListResponseDto> dto = postsService.findAllDesc();
-        model.addAttribute("posts", dto);
-        if(user != null){
-            System.out.println("name: " + user.getName());
-            System.out.println("email: " + user.getEmail());
-            System.out.println("picture: " + user.getPicture());
-            model.addAttribute("userName", user.getName());
-            model.addAttribute("userPic", user.getPicture());
-            model.addAttribute("userEmail", user.getEmail());
-        }
+//        List<PostsListResponseDto> dto = postsService.findAllDesc();
+//        model.addAttribute("posts", dto);
+//        if(user != null){
+//            System.out.println("name: " + user.getName());
+//            System.out.println("email: " + user.getEmail());
+//            System.out.println("picture: " + user.getPicture());
+//            model.addAttribute("userName", user.getName());
+//            model.addAttribute("userPic", user.getPicture());
+//            model.addAttribute("userEmail", user.getEmail());
+//        }
 
         return "index";
     }
