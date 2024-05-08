@@ -10,7 +10,7 @@ echo "> Copy Build files..."
 cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> Check running PID..."
-CURRENT_PID=$(pgrep -fl ${PROJECT_NAME} | jar | awk '{print $1}')
+CURRENT_PID=$(pgrep -fl ${PROJECT_NAME} | grep jar | awk '{print $1}')
 
 echo "> Running PID: $CURRENT_PID"
 
