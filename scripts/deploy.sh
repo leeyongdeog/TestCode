@@ -3,6 +3,9 @@
 REPOSITORY=/home/ubuntu/app/step2
 PROJECT_NAME=TestCode
 
+echo "> Remove before jar..."
+rm $REPOSITORY/*.jar
+
 echo "> Copy Build files..."
 cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
@@ -18,6 +21,7 @@ else
   kill -15 CURRENT_PID
   sleep 5
 fi
+
 echo "> Deploy..."
 JAR_NAME=$(ls -tr $REPOSITORY/*.jar | tail -n 1)
 
